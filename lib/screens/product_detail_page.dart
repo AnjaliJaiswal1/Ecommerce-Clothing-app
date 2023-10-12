@@ -193,7 +193,7 @@ class ProductDetailPage extends StatelessWidget {
                         ElevatedButton.icon(
                             onPressed: () {
                               if (cartitems.values.contains(product)) {
-                                Get.to(() => const CartItemsPage());
+                                Get.to(() => const CartScreen());
                               } else {
                                 cartitems.put(product.id, product);
                               }

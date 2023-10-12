@@ -3,6 +3,7 @@ import 'package:ecommerce_clothing_app/Hive/product_cart_hive.dart';
 import 'package:ecommerce_clothing_app/controllers/services.dart';
 import 'package:ecommerce_clothing_app/helper/constants.dart';
 import 'package:ecommerce_clothing_app/helper/widgets.dart';
+import 'package:ecommerce_clothing_app/screens/cart_items_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       title: 'Ecommerce Clothing App',
       theme: ThemeData(
         appBarTheme: AppBarTheme(
+            titleTextStyle: TextStyle(color: Colors.black, fontSize: 22),
             elevation: 0,
             backgroundColor: Colors.white,
             iconTheme: IconThemeData(color: Colors.black)),
@@ -323,7 +325,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             Flexible(
                               flex: 1,
                               child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(() => const CartScreen());
+                                  },
                                   icon: const Icon(
                                     Icons.shopping_bag_outlined,
                                     size: 32,
