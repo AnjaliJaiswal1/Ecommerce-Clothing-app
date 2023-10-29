@@ -50,10 +50,10 @@ class ProductDetailPage extends StatelessWidget {
                   icon: const Icon(Icons.share_outlined),
                   onPressed: () {},
                 ),
-                IconButton(
-                  icon: const Icon(Icons.shopping_bag_outlined),
-                  onPressed: () {},
-                ),
+                // IconButton(
+                //   icon: const Icon(Icons.shopping_bag_outlined),
+                //   onPressed: () {},
+                // ),
               ],
             ),
             body: Padding(
@@ -132,7 +132,7 @@ class ProductDetailPage extends StatelessWidget {
                             const TextStyle(fontSize: 15, color: Colors.grey),
                       ),
                       const SizedBox(
-                        height: 24,
+                        height: 32,
                       ),
                       const Text(
                         "Recommended Products",
@@ -140,7 +140,7 @@ class ProductDetailPage extends StatelessWidget {
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
-                        height: 12,
+                        height: 24,
                       ),
                       GridView.builder(
                           shrinkWrap: true,
@@ -192,17 +192,19 @@ class ProductDetailPage extends StatelessWidget {
                         ),
                         ElevatedButton.icon(
                             onPressed: () {
-                              if (cartitems.values.contains(product)) {
+                              if (cartitems.keys.contains(product.id)) {
                                 Get.to(() => const CartScreen());
                               } else {
-                                cartitems.put(product.id, product);
+                                //Here i am fetching data from fakestore api so data wont have count. In your own ecommerce make model with count so you donot have to store items in map form
+                                Map p = {'count': 1, 'product': product};
+                                cartitems.put(product.id, p);
                               }
                             },
                             icon: const Icon(Icons.shopping_bag_outlined),
                             label: Padding(
                               padding: const EdgeInsets.symmetric(
                                   vertical: 16.0, horizontal: 8),
-                              child: Text(cartitems.values.contains(product)
+                              child: Text(cartitems.keys.contains(product.id)
                                   ? "Go to cart"
                                   : "Add to Cart"),
                             ),

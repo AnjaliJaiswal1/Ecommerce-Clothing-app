@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_clothing_app/Hive/product_cart_hive.dart';
 import 'package:ecommerce_clothing_app/controllers/services.dart';
 import 'package:ecommerce_clothing_app/helper/constants.dart';
 import 'package:ecommerce_clothing_app/helper/widgets.dart';
 import 'package:ecommerce_clothing_app/screens/cart_items_page.dart';
+import 'package:ecommerce_clothing_app/screens/whishlist_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -40,7 +43,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Ecommerce Clothing App',
       theme: ThemeData(
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
             titleTextStyle: TextStyle(color: Colors.black, fontSize: 22),
             elevation: 0,
             backgroundColor: Colors.white,
@@ -151,7 +154,8 @@ class _MyHomePageState extends State<MyHomePage> {
             List<ProductModel> products = snapshot.data!;
             return ValueListenableBuilder<Box>(
                 valueListenable: cartItemBox.listenable(),
-                builder: (context, productBox, _) {
+                builder: (context, cartItems, _) {
+                  log(cartItems.values.toString());
                   return Stack(
                     children: [
                       SingleChildScrollView(
@@ -336,7 +340,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             Flexible(
                               flex: 1,
                               child: IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.to(() => const WhislistScreen());
+                                  },
                                   icon: const Icon(
                                     Icons.favorite_outline,
                                     size: 32,
