@@ -2,6 +2,7 @@ import 'package:ecommerce_clothing_app/Hive/product_cart_hive.dart';
 import 'package:ecommerce_clothing_app/helper/constants.dart';
 import 'package:ecommerce_clothing_app/main.dart';
 import 'package:ecommerce_clothing_app/screens/cart_items_page.dart';
+import 'package:ecommerce_clothing_app/screens/product_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -77,6 +78,10 @@ class WhislistScreen extends StatelessWidget {
                         ));
                       },
                       child: ListTile(
+                        onTap: () {
+                          Get.to(() => ProductDetailPage(
+                              product: product, recommendedProducts: []));
+                        },
                         contentPadding: const EdgeInsets.all(16),
                         tileColor: Colors.white,
                         leading: Image.network(
@@ -92,20 +97,6 @@ class WhislistScreen extends StatelessWidget {
                           style: const TextStyle(
                               color: primaryColor, fontSize: 16),
                         ),
-                        trailing: ElevatedButton(
-                            onPressed: () {
-                              if (wishlists.keys.contains(product.id)) {
-                                Get.to(() => const CartScreen());
-                              } else {
-                                //Here i am fetching data from fakestore api so data wont have count. In your own ecommerce make model with count so you donot have to store items in map form
-                                wishlists.put(product.id, product);
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: primaryColor),
-                            child: Text(wishlists.values.contains(product)
-                                ? "Go to cart"
-                                : "Add to cart")),
                       ),
                     ),
                   );

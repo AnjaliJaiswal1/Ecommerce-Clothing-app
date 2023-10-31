@@ -1,4 +1,4 @@
-import 'dart:developer';
+// ------flutter version: 3.13.3--------------
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_clothing_app/Hive/product_cart_hive.dart';
@@ -56,80 +56,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/* 
-class MyHomePage2 extends StatefulWidget {
-  const MyHomePage2({
-    super.key,
-  });
-
-  @override
-  State<MyHomePage2> createState() => _MyHomePage2State();
-}
-
-class _MyHomePage2State extends State<MyHomePage2> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Ecommerce app")),
-      body: FutureBuilder<List<ProductModel>>(
-        future: Services.getProducts(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator.adaptive());
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          }
-          List<ProductModel> products = snapshot.data!;
-          return ValueListenableBuilder<Box>(
-              valueListenable: cartItemBox.listenable(),
-              builder: (context, productBox, _) {
-                return ListView.builder(
-                    itemCount: products.length,
-                    itemBuilder: (ctx, index) {
-                      return ListTile(
-                        subtitle: Text(products[index].description.toString()),
-                        title: Column(
-                          children: [
-                            Text(products[index].title.toString()),
-                            Text("Category :  ${products[index].category}"),
-                            Text("Price :  ${products[index].price}"),
-                          ],
-                        ),
-                        trailing: IconButton(
-                          icon: cartItemBox.values.contains(products[index])
-                              ? const Icon(Icons.favorite)
-                              : const Icon(Icons.favorite_border),
-                          onPressed: () {
-                            if (cartItemBox.values.contains(products[index])) {
-                              cartItemBox.delete(products[index].id);
-                            } else {
-                              cartItemBox.put(
-                                  products[index].id, products[index]);
-                            }
-                          },
-                        ),
-                        leading: SizedBox(
-                          width: 120,
-                          child: Row(
-                            children: [
-                              Text("${index + 1}"),
-                              Image.network(
-                                products[index].image,
-                                height: 120,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    });
-              });
-        },
-      ),
-    );
-  }
-}
- */
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -155,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
             return ValueListenableBuilder<Box>(
                 valueListenable: cartItemBox.listenable(),
                 builder: (context, cartItems, _) {
-                  log(cartItems.values.toString());
+                  int numberOfCartItems = cartItems.length;
                   return Stack(
                     children: [
                       SingleChildScrollView(
@@ -332,9 +258,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                   onPressed: () {
                                     Get.to(() => const CartScreen());
                                   },
-                                  icon: const Icon(
-                                    Icons.shopping_bag_outlined,
-                                    size: 32,
+                                  icon: Badge(
+                                    label: Text(numberOfCartItems.toString()),
+                                    child: const Icon(
+                                      Icons.shopping_bag_outlined,
+                                      size: 32,
+                                    ),
                                   )),
                             ),
                             Flexible(
@@ -356,6 +285,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
           }),
       bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          selectedFontSize: 18,
+          selectedIconTheme: const IconThemeData(size: 30),
+          selectedItemColor: primaryColor,
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
