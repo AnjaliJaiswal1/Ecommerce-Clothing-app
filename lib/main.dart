@@ -176,7 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     "Best Sale Product",
                                     style: TextStyle(
                                         fontSize: 22,
-                                        fontWeight: FontWeight.bold),
+                                        fontWeight: FontWeight.bold), 
                                   ),
                                   Text(
                                     "See more",
