@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 class Services extends ChangeNotifier {
   static const String baseUrl = 'https://fakestoreapi.com/products';
+  // static const String baseUrl = 'https://kohls.p.rapidapi.com/products/list';
 
 //---Fetching data from fakestoreapi
 

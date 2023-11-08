@@ -87,28 +87,36 @@ class _MyHomePageState extends State<MyHomePage> {
                       SingleChildScrollView(
                         child: Column(
                           children: [
-                            Padding(
+                            Container(
+                              height: Get.height * 0.3,
+                              width: Get.width,
                               padding:
                                   const EdgeInsets.symmetric(vertical: 0.0),
                               child: CarouselSlider(
                                   items: [
                                     Image.asset(
                                       'assets/images/sale.jpg',
-                                      fit: BoxFit.fill,
+                                      fit: BoxFit.cover,
+                                      height: Get.height * 0.3,
+                                      width: Get.width,
                                     ),
                                     Image.asset(
                                       'assets/images/sale1.jpg',
-                                      fit: BoxFit.fill,
+                                      fit: BoxFit.cover,
+                                      height: Get.height * 0.3,
+                                      width: Get.width,
                                     ),
                                     Image.asset(
                                       'assets/images/sale2.jpg',
                                       fit: BoxFit.cover,
-                                      width: 400,
+                                      height: Get.height * 0.3,
+                                      width: Get.width,
                                     ),
                                     Image.asset(
                                       'assets/images/sale3.jpg',
-                                      fit: BoxFit.fill,
-                                      width: 320,
+                                      fit: BoxFit.cover,
+                                      height: Get.height * 0.3,
+                                      width: Get.width,
                                     ),
                                   ],
                                   options: CarouselOptions(
@@ -200,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           crossAxisSpacing: 12,
                                           childAspectRatio: 0.5,
                                           mainAxisSpacing: 12,
-                                          crossAxisCount: 2),
+                                          crossAxisCount: 2,),
                                   itemCount: products.length,
                                   itemBuilder: (ctx, index) {
                                     List<ProductModel> recommendedProducts =

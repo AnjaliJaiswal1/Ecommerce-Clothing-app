@@ -74,11 +74,15 @@ class ProductContainer extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Hero(
-                      tag: product.id,
-                      child: Image.network(
-                        product.image,
-                        height: 150,
+                    Align(
+                      alignment: Alignment.center,
+                      child: Hero(
+                        tag: product.id,
+                        child: Image.network(
+                          product.image,
+                          height: Get.height * 0.15,
+                          width: Get.width * 0.3,
+                        ),
                       ),
                     ),
                     Padding(
