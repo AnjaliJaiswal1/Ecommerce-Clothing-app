@@ -1,7 +1,6 @@
 import 'package:ecommerce_clothing_app/Hive/product_cart_hive.dart';
 import 'package:ecommerce_clothing_app/helper/constants.dart';
 import 'package:ecommerce_clothing_app/main.dart';
-import 'package:ecommerce_clothing_app/screens/cart_items_page.dart';
 import 'package:ecommerce_clothing_app/screens/product_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,17 +30,34 @@ class WhislistScreen extends StatelessWidget {
                           ? null
                           : () {
                               Get.defaultDialog(
+                                  titlePadding: const EdgeInsets.all(16),
+                                  radius: 16,
                                   cancel: TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text("Cancel")),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text(
+                                      "Cancel",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
                                   confirm: TextButton(
-                                      onPressed: () {
-                                        wishlists.clear().then(
-                                            (value) => Navigator.pop(context));
-                                      },
-                                      child: const Text("Ok")),
+                                    onPressed: () {
+                                      wishlists.clear().then(
+                                          (value) => Navigator.pop(context));
+                                    },
+                                    child: const Text(
+                                      "Ok",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ),
                                   content: const Text(""),
                                   title: "Remove all $productLength items?");
                             },
